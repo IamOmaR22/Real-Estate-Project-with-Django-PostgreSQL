@@ -130,3 +130,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'realstate/static')   ## location/address of the static folder
 ]
 ## after this apply on gitbash - python manage.py collectstatic, it will create the static folder in root directory
+
+
+# Media Folder Settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
