@@ -1,7 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
 from .models import Listing
-
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator  ## For Pagination
 
 
@@ -24,8 +22,17 @@ def index(request):
     return render(request, 'listings/listings.html', context)
 
 
+##----## This is for single listing (More Info Button) ##----##
 def listing(request, listing_id):
-    return render(request, 'listings/listing.html')
+
+    listing = get_object_or_404(Listing, pk=listing_id)   ## if page doesn't exist, it will show page not found(error message)
+
+    context = {
+        'listing': listing
+    }
+
+    return render(request, 'listings/listing.html', context)
+
 
 
 def search(request):
