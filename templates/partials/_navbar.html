@@ -11,6 +11,8 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+  <!-- Start -->
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
         <!-- High Light Home Button Start -->
@@ -51,8 +53,10 @@
           </li>
         </ul>
 
+    <!-- Log In and Register Button ( In Navbar ) Start -->
+      <ul class="navbar-nav ml-auto">
 
-        <ul class="navbar-nav ml-auto">
+      <!-- Register Button ( In Navbar ) Start -->
         <!-- High Light Register Button Start -->
           <li
             {% if 'register' in request.path %}
@@ -65,7 +69,10 @@
             <a class="nav-link" href="{% url 'register' %}">
               <i class="fas fa-user-plus"></i> Register</a>
           </li>
+      <!-- Register Button ( In Navbar ) End -->
 
+
+      <!-- Log In Button ( In Navbar ) Start -->
         <!-- High Light Login Button Start -->
           <li
             {% if 'login' in request.path %}
@@ -78,8 +85,12 @@
             <a class="nav-link" href="{% url 'login' %}">
               <i class="fas fa-sign-in-alt"></i> Login</a>
           </li>
-        </ul>
+      <!-- Log In Button ( In Navbar ) End -->
+
+      </ul>
+    <!-- Log In and Register Button ( In Navbar ) End -->
       </div>
+  <!-- End -->
     </div>
   </nav>
 <!-- Navbar End -->
