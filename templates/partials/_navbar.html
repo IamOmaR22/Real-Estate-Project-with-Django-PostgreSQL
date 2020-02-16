@@ -49,20 +49,34 @@
         <!-- High Light Featured Listings Button Start -->
             <a class="nav-link" href="{% url 'listings' %}">Featured Listings</a>
           </li>
-
-
         </ul>
 
+
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="register.html">
+        <!-- High Light Register Button Start -->
+          <li
+            {% if 'register' in request.path %}
+                class="nav-item active mr-3"
+            {% else %}
+                 class="nav-item mr-3"
+            {% endif %}
+          >
+        <!-- High Light Register Button End -->
+            <a class="nav-link" href="{% url 'register' %}">
               <i class="fas fa-user-plus"></i> Register</a>
           </li>
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="login.html">
-              <i class="fas fa-sign-in-alt"></i>
 
-              Login</a>
+        <!-- High Light Login Button Start -->
+          <li
+            {% if 'login' in request.path %}
+                class="nav-item active mr-3"
+            {% else %}
+                 class="nav-item mr-3"
+            {% endif %}
+          >
+        <!-- High Light Login Button End -->
+            <a class="nav-link" href="{% url 'login' %}">
+              <i class="fas fa-sign-in-alt"></i> Login</a>
           </li>
         </ul>
       </div>
