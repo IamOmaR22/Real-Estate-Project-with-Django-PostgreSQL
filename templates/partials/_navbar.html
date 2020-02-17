@@ -56,41 +56,66 @@
     <!-- Log In and Register Button ( In Navbar ) Start -->
       <ul class="navbar-nav ml-auto">
 
-      <!-- Register Button ( In Navbar ) Start -->
-        <!-- High Light Register Button Start -->
-          <li
-            {% if 'register' in request.path %}
-                class="nav-item active mr-3"
-            {% else %}
-                 class="nav-item mr-3"
-            {% endif %}
-          >
-        <!-- High Light Register Button End -->
-            <a class="nav-link" href="{% url 'register' %}">
-              <i class="fas fa-user-plus"></i> Register</a>
-          </li>
-      <!-- Register Button ( In Navbar ) End -->
+        {% if user.is_authenticated %} <!-- If logged in then Dashboard button appeared in home -->
+            <li
+                {% if 'dashboard' in request.path %}
+                    class="nav-item active mr-3"
+                {% else %}
+                     class="nav-item mr-3"
+                {% endif %}
+              >
+                <a class="nav-link" href="{% url 'dashboard' %}">
+                  Welcome {{ user.username }} (Dashboard)</a>
+            </li>
+
+            <li class="nav-item mr-3">
+                <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+                <form action="{% url 'logout' %}" method="POST" id="logout">
+                    {% csrf_token %}
+                    <input type="hidden">
+                </form>
+            </li>
+
+        {% else %}              <!-- If not logged in then you cannot see/get acces to dashboard -->
+          <!-- Register Button ( In Navbar ) Start -->
+            <!-- High Light Register Button Start -->
+              <li
+                {% if 'register' in request.path %}
+                    class="nav-item active mr-3"
+                {% else %}
+                     class="nav-item mr-3"
+                {% endif %}
+              >
+            <!-- High Light Register Button End -->
+                <a class="nav-link" href="{% url 'register' %}">
+                  <i class="fas fa-user-plus"></i> Register</a>
+              </li>
+          <!-- Register Button ( In Navbar ) End -->
 
 
-      <!-- Log In Button ( In Navbar ) Start -->
-        <!-- High Light Login Button Start -->
-          <li
-            {% if 'login' in request.path %}
-                class="nav-item active mr-3"
-            {% else %}
-                 class="nav-item mr-3"
-            {% endif %}
-          >
-        <!-- High Light Login Button End -->
-            <a class="nav-link" href="{% url 'login' %}">
-              <i class="fas fa-sign-in-alt"></i> Login</a>
-          </li>
-      <!-- Log In Button ( In Navbar ) End -->
-
+          <!-- Log In Button ( In Navbar ) Start -->
+            <!-- High Light Login Button Start -->
+              <li
+                {% if 'login' in request.path %}
+                    class="nav-item active mr-3"
+                {% else %}
+                     class="nav-item mr-3"
+                {% endif %}
+              >
+            <!-- High Light Login Button End -->
+                <a class="nav-link" href="{% url 'login' %}">
+                  <i class="fas fa-sign-in-alt"></i> Login</a>
+              </li>
+          <!-- Log In Button ( In Navbar ) End -->
+        {% endif %}
       </ul>
     <!-- Log In and Register Button ( In Navbar ) End -->
+
       </div>
   <!-- End -->
     </div>
+  <!-- Container End -->
   </nav>
 <!-- Navbar End -->
