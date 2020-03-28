@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'realtors.apps.RealtorsConfig',  # realtors app
     'django.contrib.humanize',     ## It will allow us to use human eyes( we can use comma etc by using this)
     'accounts.apps.AccountsConfig',  ## accounts app
+    'contacts.apps.ContactsConfig',  ## contacts app
 ]
 
 MIDDLEWARE = [
