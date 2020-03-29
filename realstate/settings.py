@@ -145,3 +145,11 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'  ## danger from Bootstrap
 }
 ### Message Alerts (After submit reg/login etc form, it will show a message) End ###
+
+
+## Email Config
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sumaiyabinte580@gmail.com'
+EMAIL_HOST_PASSWORD = 'sumaiya1122334455binte'
+EMAIL_USE_TLS = True

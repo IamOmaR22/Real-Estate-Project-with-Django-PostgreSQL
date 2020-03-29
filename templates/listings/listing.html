@@ -38,6 +38,10 @@
     </div>
   </section>
 
+    <!-- Alerts (Message alerts) Start -->
+        {% include 'partials/_alerts.html' %}
+    <!-- Alerts (Message alerts) End -->
+
   <!-- Listing -->
   <section id="listing" class="py-4">
     <div class="container">
@@ -188,20 +192,35 @@
             <span>&times;</span>
           </button>
         </div>
+
+      <!-- Make an Inquiry Form (In listings page) Start -->
         <div class="modal-body">
-          <form>
+          <form action="{% url 'contact' %}" method="POST">
+              {% csrf_token %}
+              {% if user.is_authenticated %}
+                  <input type="hidden" name="user_id" value="{{ user.id }}">
+
+              {% else %}
+                  <input type="hidden" name="user_id" value="0">
+
+              {% endif %}
+
+              <input type="hidden" name="realtor_email" value="{{ listing.realtor.email }}">
+              <input type="hidden" name="listing_id" value="{{ listing.id }}">
             <div class="form-group">
               <label for="property_name" class="col-form-label">Property:</label>
-              <input type="text" name="listing" class="form-control" value="45 Drivewood Cirlce" disabled>
+              <input type="text" name="listing" class="form-control" value="{{ listing.title }}">
             </div>
+          <!-- Provide info from logged in User Start -->
             <div class="form-group">
               <label for="name" class="col-form-label">Name:</label>
-              <input type="text" name="name" class="form-control" required>
+              <input type="text" name="name" class="form-control" {% if user.is_authenticated %} value="{{ user.first_name }} {{ user.last_name }}" {% endif %} required>
             </div>
             <div class="form-group">
               <label for="email" class="col-form-label">Email:</label>
-              <input type="email" name="email" class="form-control" required>
+              <input type="email" name="email" class="form-control" {% if user.is_authenticated %} value="{{ user.email }}" {% endif %} required>
             </div>
+          <!-- Provide info from logged in User End -->
             <div class="form-group">
               <label for="phone" class="col-form-label">Phone:</label>
               <input type="text" name="phone" class="form-control">
@@ -214,6 +233,8 @@
             <input type="submit" value="Send" class="btn btn-block btn-secondary">
           </form>
         </div>
+      <!-- Make an Inquiry Form (In listings page) End -->
+
       </div>
     </div>
   </div>
