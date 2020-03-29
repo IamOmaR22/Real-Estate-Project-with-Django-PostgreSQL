@@ -23,7 +23,7 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="{% url 'index' %}">   ## index is name of the urls
+            <a href="{% url 'index' %}">   <!-- index is name of the urls -->
               <i class="fas fa-home"></i> Home</a>
           </li>
           <li class="breadcrumb-item active"> About</li>
@@ -73,7 +73,7 @@
     <h2 class="display-4">We Work For You</h2>
     <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit aperiam, unde aliquid at similique!</h4>
     <hr>
-    <a href="listings.html" class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
+    <a href="{% url 'listings' %}" class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
   </section>
 
   <!-- Team Start -->
