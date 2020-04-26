@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0(6e97v$fty^=ihz$7^qv3k9uc=1ayzz2hqww#t-jau%*n^5ui'
+SECRET_KEY = '0(6e97v$fomarty^=ihz$7^qv3farukk9uc=1ayzz2hqww#t-jau%*n^5ui'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'realestatedb',
-        'USER': 'postgres',
-        'PASSWORD': 'omar',
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
         'HOST': 'localhost',
         # 'PORT': '5432',
     }
@@ -150,6 +150,6 @@ MESSAGE_TAGS = {
 ## Email Config
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'sumaiyabinte580@gmail.com'
-EMAIL_HOST_PASSWORD = 'sumaiya1122334455binte'
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')  # Access From Environment Variables
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')  # Access From Environment Variables
 EMAIL_USE_TLS = True
